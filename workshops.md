@@ -1,6 +1,9 @@
 # Workshops: Protostar - smooth smart contract development experience
 Time: 25 min (your coffee won't even get cold) <br>
-Protostar docs: https://docs.swmansion.com/protostar/docs/tutorials/testing/fuzzing
+Protostar docs: https://docs.swmansion.com/protostar/docs
+
+# This script: shorturl.at/ntvN3
+![qe](qr.png)
 ## What is Protostar?
 It is smart contract development toolchain for StarkNet. It helps you with:
 - Managing dependencies
@@ -8,7 +11,7 @@ It is smart contract development toolchain for StarkNet. It helps you with:
 - StarkNet interactions
 
 ## Why to use Protostar
-- fast, uses custom implementation of StarkNet to improve the preformance
+- fast - uses the custom implementation of StarkNet to improve the preformance
 - frictionless - easy installation, easy to use
 - flexible - cheatcodes allow to test a lot of scenarios
 - actively developed - developers are very responsive, we try to address community needs
@@ -193,12 +196,14 @@ func test_voting{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
 ```
 
 ## Build, Declare & Deploy
-
-
-Our contract is somewhat finished, wo we will build and deploy it on testnet. 
-You will need an account on testnet to follow that. If you don't have it you can learn how to create one here
-TODO
-
+Our contract is somewhat finished, so we we will build and deploy it on testnet now. 
+You will need an account to follow that. If you don't have it you can create it using for example Argent
+https://www.argent.xyz/argent-x/
+Run 
+```
+export PROTOSTAR_ACCOUNT_PRIVATE_KEY=<pkey>
+```
+to use your account.
 ### Building
 Simple as that!
 ```
@@ -212,22 +217,29 @@ Class hash for contract "main": 0x2a5de1b145e18dfeb31c7cd7ff403714ededf5f3fdf75f
 ```
 Your compiled contract is located in `build` directory.
 
-
 ### Declare
 
-
-To declare your contract you just simply run
+To declare your contract you can just simply run
 ```
-protostar declare --account-address ACCOUNT_ADDRESS build/main.json --private-key-path PRIVATE_KEY_PATH
+protostar declare \
+--max-fee=<> \
+--account-address <> \
+--gateway-url <> \
+--chain-id=1536727068981429685321 \
+build/main.json
 ```
 
 
 ### Deploy
 To deploy your contract you just simply run
 ```
-protostar deploy ./build/main.json --network alpha-goerli
+protostar deploy \
+--max-fee=<> \
+--account-address <> \
+--gateway-url <> \
+--chain-id=<> \
+<class-hash>
 ```
-TODO
 
 ## What next
 You are interested in extending your knowledge of Protostar further? Great! Here are some directions you can explore rich protostar toolbox.
